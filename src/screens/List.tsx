@@ -9,7 +9,33 @@ interface ITodo {
     complete: boolean;
 }
 
+/*     return (
+        <Fragment>
+            <form onSubmit={handleSubmit}>
+                <input type="text" value={value} onChange={(e) => setValue(e.target.value)} required />
+                <button type="submit">Add to list</button>
+            </form>
+
+            <section>
+                {todos.map((todo: ITodo, index: number) => (
+                    <Fragment key={index}>
+                        <div style={{ textDecoration: todo.complete ? "line-through" : "" }}>{todo.text}</div>
+                        <button type="button" onClick={() => completeTodo(index)}>
+                            {todo.complete ? "Incomplete" : "Complete"}
+                        </button>
+                        <button type="button" onClick={() => removeTodo(index)}>
+                            delete
+                        </button>
+                    </Fragment>
+                ))}
+            </section>
+        </Fragment>
+    );
+}; */
+
 export const List = () => {
+    /*Funktion um eingegebenen Text aufzulisten*/
+
     const [value, setValue] = useState<string>("");
 
     const [todos, setTodos] = useState<ITodo[]>([]);
@@ -39,40 +65,8 @@ export const List = () => {
 
     return (
         <Fragment>
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={value} onChange={(e) => setValue(e.target.value)} required />
-                <button type="submit">Add to list</button>
-            </form>
-
-            <section>
-                {todos.map((todo: ITodo, index: number) => (
-                    <Fragment key={index}>
-                        <div style={{ textDecoration: todo.complete ? "line-through" : "" }}>{todo.text}</div>
-                        <button type="button" onClick={() => completeTodo(index)}>
-                            {todo.complete ? "Incomplete" : "Complete"}
-                        </button>
-                        <button type="button" onClick={() => removeTodo(index)}>
-                            delete
-                        </button>
-                    </Fragment>
-                ))}
-            </section>
-        </Fragment>
-    );
-};
-
-/* export const List = () => {
-    /*Funktion um eingegebenen Text aufzulisten*/
-/*     const [value, setValue] = useState<string>("");
-
-    const handleSubmit = (e: FormElem): void => {
-        e.preventDefault();
-        setValue("");
-    };
-
-    return (
-        <Fragment>
             <h1>Things to do</h1>
+
             <h2>Must do Today</h2>
             <InputGroup className="mb-3">
                 <FormControl
@@ -103,6 +97,24 @@ export const List = () => {
             <Form.Group controlId="formBasicChecbox">
                 <Form.Check className="checkboxes" type="checkbox" label="Check me out" />
             </Form.Group>
+            <h2>Tutorial-List: Zum Formatieren</h2>
+            <form onSubmit={handleSubmit}>
+                <input type="text" value={value} onChange={(e) => setValue(e.target.value)} required />
+                <button type="submit">Add to list</button>
+            </form>
+            <section>
+                {todos.map((todo: ITodo, index: number) => (
+                    <Fragment key={index}>
+                        <div style={{ textDecoration: todo.complete ? "line-through" : "" }}>{todo.text}</div>
+                        <button type="button" onClick={() => completeTodo(index)}>
+                            {todo.complete ? "Incomplete" : "Complete"}
+                        </button>
+                        <button type="button" onClick={() => removeTodo(index)}>
+                            delete
+                        </button>
+                    </Fragment>
+                ))}
+            </section>
         </Fragment>
     );
-}; */
+};
